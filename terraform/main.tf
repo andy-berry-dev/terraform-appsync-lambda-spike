@@ -80,5 +80,5 @@ module "graphql_query_test" {
     lambda_role = "${aws_iam_role.appsync_graphql_role.arn}"
     type = "Query"
     field = "test"
-    source_path = "./lambda_source/query-test"
+    source_path = "../engine/graphql/queries/test"
 }
