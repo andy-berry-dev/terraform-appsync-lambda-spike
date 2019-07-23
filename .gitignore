@@ -1,0 +1,7 @@
+build
+.terraform
+
+*.tfstate
+*.tfstate.*
+
+node_modules
