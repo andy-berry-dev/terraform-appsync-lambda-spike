@@ -2,10 +2,7 @@ data "archive_file" "lambda_deployment_package" {
     type = "zip"
     source_dir = "${var.source_path}"
     output_path = "${local.lambda_deployment_package_output_path}"
-    #depends_on = [ null_resource.lambda_knex_datasource_deps ]
 }
-
-
 
 resource "aws_lambda_function" "graphql_lambda" {
     function_name = "${local.lambda_function_name}"
@@ -14,18 +11,14 @@ resource "aws_lambda_function" "graphql_lambda" {
     source_code_hash = "${data.archive_file.lambda_deployment_package.output_base64sha256}"
     handler = "${var.lambda_handler}"
     runtime = "${var.lambda_runtime}"
-    #   vpc_config {
-    #     subnet_ids = var.local_db_subnet_ids
-    #     security_group_ids = var.local_db_security_group_ids
-    #   }
-    #   environment {
-    #     variables = {
-    #       DBNAME        = "${var.local_db_name}"
-    #       ENDPOINT      = "${var.local_db_endpoint}"
-    #       USERNAME      = "${var.local_db_username}"
-    #       PASSWORD      = "${var.local_db_password}"
-    #     }
-    #   }
+    vpc_config {
+        subnet_ids = var.subnet_ids
+        security_group_ids = var.security_group_ids
+    }
+    environment {
+        variables = "${var.env_vars}"
+    }
+    layers = "${var.lambda_layers}"
     role = "${var.lambda_role}"
     timeout = "${var.lambda_timeout}"
     #   depends_on = [ aws_s3_bucket_object.knex_source_zip, data.archive_file.lambda_knex_datasource ]

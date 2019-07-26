@@ -3,6 +3,17 @@ variable "cluster_name" {
     type = string
 }
 
+variable "subnet_name" {
+    description = "The name of the subnet to deploy to"
+    type = string
+}
+
+variable "security_group_ids" {
+    description = "The security group IDs for the cluster"
+    type = set(string)
+    default = []
+}
+
 variable "node_type" {
     description = "The size of the node"
     type = string

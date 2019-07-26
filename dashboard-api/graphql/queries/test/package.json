@@ -1,0 +1,7 @@
+{
+  "name": "query-test",
+  "version": "0.0.0",
+  "dependencies": {
+    "mobilize-dashboard-api-utils": "0.0.0"
+  }
+}

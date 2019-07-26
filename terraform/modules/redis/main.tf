@@ -6,4 +6,6 @@ resource "aws_elasticache_cluster" "redis" {
     parameter_group_name = "${var.parameter_group_name}"
     engine_version = "${var.engine_version}"
     port = "${var.port}"
+    subnet_group_name = "${var.subnet_name}"
+    security_group_ids = "${var.security_group_ids}"
 }

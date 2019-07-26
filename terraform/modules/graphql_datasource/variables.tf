@@ -3,6 +3,16 @@ variable "api_id" {
     type = string
 }
 
+variable "subnet_ids" {
+    description = "The IDs of the subnet(s) to deploy the Lambda function to"
+    type = list(string)
+}
+
+variable "security_group_ids" {
+    description = "The ID(s) of the security group for the Lambda function"
+    type = list(string)
+}
+
 variable "lambda_role" {
     description = "The role for the Lambda function"
     type = string
@@ -21,6 +31,17 @@ variable "field" {
 variable "source_path" {
     description = "The path for the Lambda source code"
     type = string
+}
+
+variable "env_vars" {
+    description = "Environment variables for the Lambda function"
+    type = map
+}
+
+variable "lambda_layers" {
+    description = "The function entrypoint"
+    type = list(string)
+    default = []
 }
 
 variable "lambda_handler" {

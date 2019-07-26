@@ -5,7 +5,7 @@ resource "aws_rds_cluster" "cluster" {
     master_password = "${var.master_password}"
     #vpc_security_group_ids = ["${aws_security_group.aurora.id}"]
     skip_final_snapshot = true
-    #db_subnet_group_name = "${aws_db_subnet_group.aurora.name}"
+    db_subnet_group_name = "${var.subnet_name}"
     engine_mode = "serverless"
     scaling_configuration {
         auto_pause = "${var.auto_pause}"

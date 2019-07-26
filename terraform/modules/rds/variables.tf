@@ -3,6 +3,11 @@ variable "cluster_name" {
     type = string
 }
 
+variable "subnet_name" {
+    description = "The name of the subnet to deploy to"
+    type = string
+}
+
 variable "master_username" {
     description = "The username for the root user"
     type = string

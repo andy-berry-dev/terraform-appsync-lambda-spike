@@ -1,0 +1,9 @@
+{
+  "name": "mobilize-dashboard-api-utils",
+  "## name ##": "!! The name must be something Mobilize specific so it doesn't clash with other NPM lib name !!",
+  "version": "0.0.0",
+  "dependencies": {
+    "bluebird": "^3.5.5",
+    "redis": "^2.8.0"
+  }
+}
