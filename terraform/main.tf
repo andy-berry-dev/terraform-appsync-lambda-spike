@@ -106,6 +106,7 @@ resource "aws_lambda_layer_version" "lambda_common_node_modules_layer" {
     filename   = "${data.external.lambda_common_node_modules_layer.result.zipfile_path}"
     source_code_hash = "${data.external.lambda_common_node_modules_layer.result.zipfile_hash}"
     compatible_runtimes = ["nodejs8.10"]
+    depends_on = [ data.external.lambda_common_node_modules_layer ]
 }
 
 module "graphql_query_test" {
